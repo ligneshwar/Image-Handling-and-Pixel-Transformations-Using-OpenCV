@@ -1,4 +1,4 @@
-## EXP 01 Image Handling and Pixel Transformations Using OpenCV
+# EXP 01 Image Handling and Pixel Transformations Using OpenCV
 
 ## Overview
 
@@ -33,7 +33,7 @@ To develop a Python program using OpenCV that performs the following operations:
 - NumPy
 - Matplotlib
 
----
+
 
 ## Algorithm
 
@@ -57,7 +57,7 @@ Split the image into RGB and HSV color channels, display each channel separately
 
 ### Step 7
 Apply bitwise image operations to generate a transformed image and display all the final output images.
----
+
 
 ## Program Developed By
 
@@ -68,16 +68,11 @@ Apply bitwise image operations to generate a transformed image and display all t
 ---
 
 
----
 
-## Python Libraries
-
-```python
-## Experiment
-
+## Python Code
 ### 1. Read an image using OpenCV.
-
 ```python
+
 import cv2
 import matplotlib.pyplot as plt
 
