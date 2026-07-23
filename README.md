@@ -37,8 +37,6 @@ To develop a Python program using OpenCV that performs the following operations:
 
 ## Algorithm
 
-## Algorithm
-
 ### Step 1
 Read the input images (`c.jpg`) using OpenCV and display them using Matplotlib.
 
