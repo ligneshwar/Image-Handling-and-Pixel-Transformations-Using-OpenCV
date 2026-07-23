@@ -1,4 +1,4 @@
-# EXP 01 Image Handling and Pixel Transformations Using OpenCV
+## EXP 01 Image Handling and Pixel Transformations Using OpenCV
 
 ## Overview
 
