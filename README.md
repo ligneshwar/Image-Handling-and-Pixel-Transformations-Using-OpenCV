@@ -70,9 +70,10 @@ Apply bitwise image operations to generate a transformed image and display all t
 
 
 ## Python Code
-### 1. Read an image using OpenCV.
-```python
 
+### 1. Read an image using OpenCV.
+
+```python
 import cv2
 import matplotlib.pyplot as plt
 
@@ -108,21 +109,34 @@ img_rgb.shape
 
 ---
 
-### 5. Draw a line.
+### 5. Draw Green Diagonal Lines.
 
 ```python
 line_img = cv2.line(
     img_rgb,
-    (0,0),
-    (768,600),
-    (255,0,0),
+    (0, 0),
+    (736, 1308),
+    (0, 255, 0),
     2
 )
+
+line_img = cv2.line(
+    line_img,
+    (736, 0),
+    (0, 1308),
+    (0, 255, 0),
+    2
+)
+
+plt.imshow(line_img)
+plt.title("Image with Green Diagonal Lines")
+plt.axis("off")
+plt.show()
 ```
 
 ---
 
-### 6. Draw a circle.
+### 6. Draw a Circle.
 
 ```python
 circle_img = cv2.circle(
@@ -132,25 +146,35 @@ circle_img = cv2.circle(
     (255,0,0),
     10
 )
+
+plt.imshow(circle_img)
+plt.title("Image with Circle")
+plt.axis("off")
+plt.show()
 ```
 
 ---
 
-### 7. Draw a rectangle.
+### 7. Draw a Green Square.
 
 ```python
-rectangle_img = cv2.rectangle(
+square_img = cv2.rectangle(
     img_rgb,
-    (0,0),
-    (736,1308),
-    (0,0,255),
+    (250,150),
+    (550,450),
+    (0,255,0),
     10
 )
+
+plt.imshow(square_img)
+plt.title("Image with Green Square")
+plt.axis("off")
+plt.show()
 ```
 
 ---
 
-### 8. Add text.
+### 8. Add Text.
 
 ```python
 text_img = cv2.putText(
@@ -160,8 +184,13 @@ text_img = cv2.putText(
     cv2.FONT_HERSHEY_SIMPLEX,
     1,
     (255,255,255),
-    10
+    3
 )
+
+plt.imshow(text_img)
+plt.title("Image with Text")
+plt.axis("off")
+plt.show()
 ```
 
 ---
@@ -170,7 +199,7 @@ text_img = cv2.putText(
 
 ```python
 image_hsv = cv2.cvtColor(
-    image_rgb,
+    img_rgb,
     cv2.COLOR_RGB2HSV
 )
 ```
@@ -181,7 +210,7 @@ image_hsv = cv2.cvtColor(
 
 ```python
 image_gray = cv2.cvtColor(
-    image_rgb,
+    img_rgb,
     cv2.COLOR_RGB2GRAY
 )
 ```
@@ -192,7 +221,7 @@ image_gray = cv2.cvtColor(
 
 ```python
 image_ycrcb = cv2.cvtColor(
-    image_rgb,
+    img_rgb,
     cv2.COLOR_RGB2YCrCb
 )
 ```
@@ -210,51 +239,84 @@ image_hsv_to_rgb = cv2.cvtColor(
 
 ---
 
-### 13. Modify a 300×300 block.
+### 13. Replace white block with a New Image.
 
 ```python
-image[200:500,200:500] = [255,255,255]
+# Read your new image
+new_img = cv2.imread("C:/Users/admin/Downloads/L.jpeg")
+new_img = cv2.cvtColor(new_img, cv2.COLOR_BGR2RGB)
+
+# Resize to match the face region
+new_img = cv2.resize(new_img, (270,350))
+
+# Replace Ronaldo's face
+img_rgb[120:470,250:520] = new_img
+
+plt.imshow(img_rgb)
+plt.title("Image Replaced with New Face")
+plt.axis("off")
+plt.show()
 ```
 
 ---
 
-### 14. Resize the image.
+### 14. Resize the Image.
 
 ```python
 resized_image = cv2.resize(
-    image,
+    img_rgb,
     (768//2,600//2)
 )
+
+plt.imshow(resized_image)
+plt.title("Resized Image")
+plt.axis("off")
+plt.show()
 ```
 
 ---
 
-### 15. Crop the image.
+### 15. Crop the Image.
 
 ```python
-roi = image[50:350,50:350]
+roi = img_rgb[50:350,50:350]
+
+plt.imshow(roi)
+plt.title("Cropped Region of Interest (ROI)")
+plt.axis("off")
+plt.show()
 ```
 
 ---
 
-### 16. Flip horizontally.
+### 16. Flip Horizontally.
 
 ```python
 flipped_horizontally = cv2.flip(
-    image,
+    img_rgb,
     1
 )
+
+plt.imshow(flipped_horizontally)
+plt.title("Horizontally Flipped Image")
+plt.axis("off")
+plt.show()
 ```
 
 ---
 
-### 17. Flip vertically.
+### 17. Flip Vertically.
 
 ```python
 flipped_vertically = cv2.flip(
-    image,
+    img_rgb,
     0
 )
+
+plt.imshow(flipped_vertically)
+plt.title("Vertically Flipped Image")
+plt.axis("off")
+plt.show()
 ```
 
 
@@ -277,21 +339,22 @@ flipped_vertically = cv2.flip(
 ---
 
 ## Output
-<img width="285" height="508" alt="image" src="https://github.com/user-attachments/assets/e541a78e-4f4d-4139-9c14-58bb3300223a" />
-<img width="280" height="502" alt="image" src="https://github.com/user-attachments/assets/511cc206-5a7c-4459-980e-8498f2e140c2" />
-<img width="282" height="507" alt="image" src="https://github.com/user-attachments/assets/5dc7257c-ff94-4434-98f0-29c00be7746d" />
-<img width="282" height="506" alt="image" src="https://github.com/user-attachments/assets/50f5ac2e-b7a5-434a-8d80-a81bdcefe2ea" />
-<img width="278" height="506" alt="image" src="https://github.com/user-attachments/assets/8b442362-e8a6-422d-a93e-961fbc7d47a1" />
-<img width="282" height="510" alt="image" src="https://github.com/user-attachments/assets/67597159-bf32-45d8-a15e-c95baf432c55" />
-<img width="277" height="505" alt="image" src="https://github.com/user-attachments/assets/298f54d1-2c51-428c-9852-de2de36f031c" />
-<img width="276" height="505" alt="image" src="https://github.com/user-attachments/assets/18253c3f-c01a-4dc3-90eb-900e98b144f6" />
-<img width="280" height="502" alt="image" src="https://github.com/user-attachments/assets/10440196-19af-4172-b328-46ca0fcebb72" />
-<img width="277" height="507" alt="image" src="https://github.com/user-attachments/assets/f610de95-2e7f-4592-9983-6320af722fbf" />
-<img width="363" height="506" alt="image" src="https://github.com/user-attachments/assets/4d868cd0-5106-48a4-ab5b-6f836a8cbcb1" />
-<img width="612" height="503" alt="image" src="https://github.com/user-attachments/assets/a1664f47-3970-4a38-90fc-6177355a0146" />
-<img width="483" height="505" alt="image" src="https://github.com/user-attachments/assets/f81654ed-08a7-4f5b-9f1c-faa2d810ab33" />
-<img width="281" height="502" alt="image" src="https://github.com/user-attachments/assets/367011d8-6032-4114-8d7b-b341f56473d1" />
-<img width="281" height="508" alt="image" src="https://github.com/user-attachments/assets/15a524b8-ce18-4834-a5a4-eaeb56ffa98e" />
+<img width="276" height="508" alt="image" src="https://github.com/user-attachments/assets/f530199d-7927-4c54-b0f0-7d7e07e9df21" />
+<img width="280" height="508" alt="image" src="https://github.com/user-attachments/assets/a85da4d5-04ea-4c8e-8d51-449d2a5f4c04" />
+<img width="282" height="507" alt="image" src="https://github.com/user-attachments/assets/8b560a15-e50b-429a-9ad5-d2356e4f55ae" />
+<img width="280" height="512" alt="image" src="https://github.com/user-attachments/assets/ffcb8e05-c137-49e7-8bdf-70c42213b564" />
+<img width="278" height="506" alt="image" src="https://github.com/user-attachments/assets/bd3a6134-5554-4968-865f-e17598f47977" />
+<img width="282" height="507" alt="image" src="https://github.com/user-attachments/assets/9187db44-2f95-4a47-b121-f2618a5792b8" />
+<img width="276" height="505" alt="image" src="https://github.com/user-attachments/assets/faad6e06-b6e3-4f05-b45b-79f20b41f17f" />
+<img width="277" height="507" alt="image" src="https://github.com/user-attachments/assets/ff945793-cd8b-47f4-8a64-b648d2c5f259" />
+<img width="276" height="507" alt="image" src="https://github.com/user-attachments/assets/a0894aba-22fd-45f0-b1ca-c62f63f5eb70" />
+<img width="276" height="508" alt="image" src="https://github.com/user-attachments/assets/86e3eff6-1200-4de4-9596-df2dc31e4ed7" />
+<img width="412" height="510" alt="image" src="https://github.com/user-attachments/assets/119365e7-7bb7-42f6-a9e3-87d271cbf2a2" />
+<img width="612" height="510" alt="image" src="https://github.com/user-attachments/assets/f47da2fb-8eb1-426a-a118-27e9c4460b52" />
+<img width="397" height="503" alt="image" src="https://github.com/user-attachments/assets/d65d23fa-8c3d-4a7d-8445-af6b4590fa46" />
+<img width="277" height="506" alt="image" src="https://github.com/user-attachments/assets/eca6331b-1d6e-4961-a31a-36fa3b7d8f6c" />
+<img width="280" height="501" alt="image" src="https://github.com/user-attachments/assets/6121f5a1-0393-4987-acef-e401f1844016" />
+
 
 
 ---
